@@ -32,4 +32,21 @@ public class Database {
     public void clear() {
         db.clear();
     }
+
+    public void renameById(long id, String newName){
+        for (Product product : db) {
+            if (product.getId() == id) {
+                product.setName(newName);
+            }
+        }
+    }
+
+    public void deleteById(long id){
+        for (Product product : db) {
+            if (product.getId() == id) {
+                db.remove(product);
+            }
+        }
+    }
+
 }

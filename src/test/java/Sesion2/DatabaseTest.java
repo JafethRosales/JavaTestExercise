@@ -61,4 +61,30 @@ public class DatabaseTest {
         assertEquals(db.size(), 0);
     }
 
+    @Test
+    @DisplayName("Database can change name")
+    public void changeName() {
+        db.insert(new Product(1, "Coca Cola 3lt"));
+        db.insert(new Product(2, "Gansito"));
+        db.insert(new Product(3, "Mordisko"));
+        db.insert(new Product(4, "Sabritas 30g"));
+
+        db.renameById(1, "Coca 3gr");
+
+        assertEquals(db.getById(1).getName(), "Coca 3gr");
+    }
+
+    @Test
+    @DisplayName("Database can delete by ID")
+    public void delete() {
+        db.insert(new Product(1, "Coca Cola 3lt"));
+        db.insert(new Product(2, "Gansito"));
+        db.insert(new Product(3, "Mordisko"));
+        db.insert(new Product(4, "Sabritas 30g"));
+
+        db.deleteById(1);
+
+        assertEquals(db.size(), 3);
+    }
+
 }
