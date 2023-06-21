@@ -23,5 +23,5 @@ jobs:
 on:
   push:
     branches:
-      - master
+      - main
 
