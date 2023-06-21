@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class DatabaseTest {
@@ -75,16 +75,16 @@ public class DatabaseTest {
     }
 
     @Test
-    @DisplayName("Database can delete by ID")
-    public void delete() {
+    @DisplayName("Delete product by id")
+    public void deleteById() {
         db.insert(new Product(1, "Coca Cola 3lt"));
         db.insert(new Product(2, "Gansito"));
         db.insert(new Product(3, "Mordisko"));
-        db.insert(new Product(4, "Sabritas 30g"));
 
-        db.deleteById(1);
+        boolean deleted = db.deleteById(1);
 
-        assertEquals(db.size(), 3);
+        assertTrue(deleted);
+        assertEquals(db.size(), 2);
     }
 
 }

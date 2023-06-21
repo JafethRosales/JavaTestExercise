@@ -2,6 +2,7 @@ package Sesion2;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Database {
 
@@ -41,12 +42,12 @@ public class Database {
         }
     }
 
-    public void deleteById(long id){
+    public boolean deleteById(long id) {
         for (Product product : db) {
             if (product.getId() == id) {
-                db.remove(product);
+                return db.remove(product);
             }
         }
+        return false;
     }
-
-}
+ }
